@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>number guessr</title>
+        <style>
+            h1 {
+                font-family: 'Luckiest Guy', cursive;
+                color: #04714b; /* Darker Teal */
+                text-align: center;
+                font-size: 5.8rem;
+                text-shadow: 2px 2px #fbff21; /* Bright Yellow text shadow */
+                margin-top: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin-top: 40px;
+            }
+            #guessInput {
+                width: 360px;
+                height: 95px;
+                padding: 10px;
+                font-size: 30px;
+            }
+            #guessButton {
+                padding: 10px 20px;
+                font-size: 30px;
+                cursor: pointer;
+                height: 95px;
+                width: auto;
+            }
+            #result {
+                margin-top: 20px;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Number Guessr</h1>
+        <input type="number" id="guessInput" placeholder="Enter your guess">
+        <button id="guessButton">TRY</button>
+        <div id="result"></div>
+
+        <script>
+            const randomNumber = Math.floor(Math.random() * 100) + 1;
+            let attempts = 0;
+            
+            
+            document.getElementById("guessButton").addEventListener("click", function() {
+                const userGuess = parseInt(document.getElementById("guessInput").value);
+                attempts++;
+
+                if (userGuess === randomNumber) {
+                    document.getElementById("result").innerText = "Congratulations! You guessed the number in " + attempts + " attempts.";
+                } else if (userGuess < randomNumber) {
+                    document.getElementById("result").innerText = "Too low! Try again.";
+                } else {
+                    document.getElementById("result").innerText = "Too high! Try again.";
+                }
+            });
+        </script>
+    </body>
+</html>
